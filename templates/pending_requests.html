@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pending Reimbursement Requests</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='title.jpg') }}" alt="Company name">
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('download_policy') }}">Download Reimbursement Policy</a></li>
+
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container1">
+        <h1>Pending Reimbursement Requests</h1>
+        {% if session.get('message') %}
+        <div id="flash-message" class="flash {{ session.pop('message_category', 'info') }}">{{ session.pop('message') }}</div>
+        {% endif %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Expense ID-Type</th>
+                    <th>Amount</th>
+                    <th>Request Date</th>
+                    <th>Document</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>    
+                {% for entry in pending_requests %}
+                <tr>
+                    <td>{{ entry.request.request_id }}</td>
+                    <td>{{ entry.user.user_id }}</td>
+                    <td>{{ entry.user.first_name }} {{ entry.user.last_name }}</td>
+                    <td>{{ entry.request_type.request_type_id }} - {{ entry.request_type.type_name }}</td>
+                    <td>{{ entry.request.amount }}</td>
+                    <td>{{ entry.request.request_date }}</td>
+                    <td>
+                        {% if entry.documents %}
+                            {% for document in entry.documents %}
+                                <a href="{{ url_for('user_uploaded_file', filename=document.document_path) }}" target="_blank">View Document</a><br>
+                            {% endfor %}
+                        {% else %}
+                            No documents uploaded
+                        {% endif %}
+                    </td>
+                
+                    <td>
+                        <form action="{{ url_for('approve_reimbursement', request_id=entry.request.request_id) }}" method="post">
+                            <button type="submit">Approve</button>
+                        </form>
+                        <form action="{{ url_for('reject_reimbursement', request_id=entry.request.request_id) }}" method="post">
+                            <button type="submit">Reject</button>
+                            <input type="text" name="comments" placeholder="Comments" required  style="width: 50%;">
+
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>    
+        </table>
+    </div> 
+    <a class="container2" href="{{ url_for('manager_dashboard') }}">Back to Dashboard</a>   
+</body>
+</html>

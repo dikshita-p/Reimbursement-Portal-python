@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reimbursement Request History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='title.jpg') }}" alt="Company name">
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('download_policy') }}">Download Reimbursement Policy</a></li>
+
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container1">
+        <h1>Reimbursement Request History</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Request Date</th>
+                    <th>Expense Type</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Comments</th>
+                    <th>Document</th>  
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in reimbursement_requests %}
+    
+                <tr>
+                    <td>{{ request.rr.request_date }}</td>
+                    <td>{{ request.rr.request_type_id }}</td>
+                    <td>{{ request.rr.amount }}</td>
+                    <td>{{ request.rr.status }}</td>
+                    <td>{{ request.rr.comments }}</td>
+                    <td>
+                    {% for document in request.documents %}
+                        <a href="{{ url_for('user_uploaded_file', filename=document.document_path) }}" target="_blank">View Document</a><br>
+                    {% endfor %}
+                    </td>
+                
+                </tr>
+                
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>   
+    <a class="container2" href="{{ url_for('employee_dashboard') }}">Back to Dashboard</a>
+</body>
+</html>

@@ -1,0 +1,206 @@
+.container {
+    max-width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+li {
+    margin: 10px;
+}
+
+.container a {
+    display: inline-block;
+    padding: 20px 40px;
+    background-color: #f0f0f0; 
+    color: #333; 
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.container a:hover {
+    background-color: #2980b9;
+}
+
+@media only screen and (max-width: 600px) {
+    a {
+        width: 100%;
+    }
+}
+header {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+header img {
+    height: 60px; 
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+a:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.container1 {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+.container1 a, button {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+}
+
+.container1 a:hover, button:hover {
+    background-color: #f0f0f0; 
+}
+.container1 a {
+    background-color: #007bff; 
+    color: white;
+}
+
+
+.container1 a:hover {
+    background-color: #0056b3;
+}
+
+
+.container1 button {
+    background-color:#007bff;
+    color:white;
+}
+
+.container1 button:hover {
+    background-color: #0056b3; 
+}
+
+.docx.container1 a{
+    color: black;
+}
+.docx.container1 a:hover{
+    color: green;
+}
+.container .container1 .container2 h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.container2 form {
+    width: 300px; /* Adjust width as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.container2 form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.container2 form input,
+.container2 form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.container2 form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.container2 form button:hover {
+    background-color: #555;
+}
+
+.container2 a {
+    margin-top: 30px;
+    text-decoration: none;
+    color: blue;
+    
+}
+
+.flash {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.flash.success { background-color: #dff0d8; border-color: #d0e9c6; color: #3c763d; }
+.flash.danger { background-color: #f2dede; border-color: #ebccd1; color: #a94442; }
+.flash.info { background-color: #d9edf7; border-color: #bce8f1; color: #31708f; }

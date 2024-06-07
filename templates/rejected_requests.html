@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejected Requests</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='title.jpg') }}" alt="Company name">
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('download_policy') }}">Download Reimbursement Policy</a></li>
+
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container1">
+        <h1>Rejected Requests</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Expense ID-Type</th>
+                    <th>Amount</th>
+                    <th>Request Date</th>
+                    <th>Comments</th>
+                    <th>Document</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in reimbursement_requests %}
+                <tr>
+                    <td>{{ request['rr'][0].request_id }}</td>
+                    <td>{{ request['rr'][1].user_id }}</td>
+                    <td>{{ request['rr'][1].first_name }} {{ request['rr'][1].last_name }}</td>
+                    <td>{{ request['rr'][2].request_type_id }} - {{ request['rr'][2].type_name }}</td>
+                    <td>{{ request['rr'][0].amount }}</td>
+                    <td>{{ request['rr'][0].request_date }}</td>
+                    <td>{{ request['rr'][0].comments }}</td>
+                    <td>
+                        {% for doc in request['documents'] %}
+                            <a href="{{ url_for('uploaded_file', filename=doc.document_path) }}" target="_blank">View Document</a><br>
+                        {% endfor %}
+                    </td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>    
+    <a class="container2" href="{{ url_for('manager_dashboard') }}">Back to Dashboard</a>   
+
+</body>
+</html>

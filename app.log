@@ -1,0 +1,127 @@
+2024-06-06 22:18:43,800 INFO: Home page accessed
+2024-06-06 22:18:44,076 INFO: log out
+2024-06-06 22:18:44,086 INFO: Home page accessed
+2024-06-06 22:18:44,206 INFO: admin dashboard
+2024-06-06 22:18:44,244 INFO: pending user registration. 
+2024-06-06 22:18:44,331 INFO: pending user registration. 
+2024-06-06 22:18:44,337 INFO: Reibursement form request tracking
+2024-06-06 22:18:44,381 INFO: Manager Dashboard
+2024-06-06 22:18:44,433 INFO: employee dashboard
+2024-06-06 22:18:44,601 ERROR: Error: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`reimbursement_portal`.`reimbursement_requests`, CONSTRAINT `reimbursement_requests_ibfk_3` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`))')
+[SQL: INSERT INTO reimbursement_requests (employee_id, request_type_id, amount, request_date, status, comments, manager_id) VALUES (%(employee_id)s, %(request_type_id)s, %(amount)s, %(request_date)s, %(status)s, %(comments)s, %(manager_id)s)]
+[parameters: {'employee_id': 1, 'request_type_id': '1', 'amount': 50.0, 'request_date': '2024-06-01', 'status': 'pending', 'comments': None, 'manager_id': 2}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2024-06-06 22:18:44,659 ERROR: Error: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`reimbursement_portal`.`reimbursement_requests`, CONSTRAINT `reimbursement_requests_ibfk_3` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`))')
+[SQL: INSERT INTO reimbursement_requests (employee_id, request_type_id, amount, request_date, status, comments, manager_id) VALUES (%(employee_id)s, %(request_type_id)s, %(amount)s, %(request_date)s, %(status)s, %(comments)s, %(manager_id)s)]
+[parameters: {'employee_id': 1, 'request_type_id': '1', 'amount': 150.0, 'request_date': '2024-06-01', 'status': 'pending', 'comments': None, 'manager_id': 2}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2024-06-06 22:18:44,693 INFO: employee history
+2024-06-06 22:18:44,741 INFO: manager dashboard
+2024-06-06 22:18:46,791 INFO: Request approved successfully.
+2024-06-06 22:18:46,904 INFO: admin edited user details
+2024-06-06 22:20:00,857 INFO: Home page accessed
+2024-06-06 22:20:01,203 INFO: log out
+2024-06-06 22:20:01,214 INFO: Home page accessed
+2024-06-06 22:20:01,301 INFO: admin dashboard
+2024-06-06 22:20:01,343 INFO: pending user registration. 
+2024-06-06 22:20:01,440 INFO: pending user registration. 
+2024-06-06 22:20:01,453 INFO: Reibursement form request tracking
+2024-06-06 22:20:01,496 INFO: Manager Dashboard
+2024-06-06 22:20:01,541 INFO: employee dashboard
+2024-06-06 22:20:01,699 ERROR: Error: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`reimbursement_portal`.`reimbursement_requests`, CONSTRAINT `reimbursement_requests_ibfk_3` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`))')
+[SQL: INSERT INTO reimbursement_requests (employee_id, request_type_id, amount, request_date, status, comments, manager_id) VALUES (%(employee_id)s, %(request_type_id)s, %(amount)s, %(request_date)s, %(status)s, %(comments)s, %(manager_id)s)]
+[parameters: {'employee_id': 1, 'request_type_id': '1', 'amount': 50.0, 'request_date': '2024-06-01', 'status': 'pending', 'comments': None, 'manager_id': 2}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2024-06-06 22:20:01,751 ERROR: Error: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`reimbursement_portal`.`reimbursement_requests`, CONSTRAINT `reimbursement_requests_ibfk_3` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`))')
+[SQL: INSERT INTO reimbursement_requests (employee_id, request_type_id, amount, request_date, status, comments, manager_id) VALUES (%(employee_id)s, %(request_type_id)s, %(amount)s, %(request_date)s, %(status)s, %(comments)s, %(manager_id)s)]
+[parameters: {'employee_id': 1, 'request_type_id': '1', 'amount': 150.0, 'request_date': '2024-06-01', 'status': 'pending', 'comments': None, 'manager_id': 2}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2024-06-06 22:20:01,785 INFO: employee history
+2024-06-06 22:20:01,827 INFO: manager dashboard
+2024-06-06 22:20:01,876 INFO: Request approved successfully.
+2024-06-06 22:20:01,979 INFO: admin edited user details
+2024-06-06 22:21:41,759 INFO: Home page accessed
+2024-06-06 22:21:42,045 INFO: log out
+2024-06-06 22:21:42,050 INFO: Home page accessed
+2024-06-06 22:21:42,151 INFO: admin dashboard
+2024-06-06 22:21:42,202 INFO: pending user registration. 
+2024-06-06 22:21:42,290 INFO: pending user registration. 
+2024-06-06 22:21:42,298 INFO: Reibursement form request tracking
+2024-06-06 22:21:42,342 INFO: Manager Dashboard
+2024-06-06 22:21:42,390 INFO: employee dashboard
+2024-06-06 22:21:42,585 ERROR: Error: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`reimbursement_portal`.`reimbursement_requests`, CONSTRAINT `reimbursement_requests_ibfk_3` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`))')
+[SQL: INSERT INTO reimbursement_requests (employee_id, request_type_id, amount, request_date, status, comments, manager_id) VALUES (%(employee_id)s, %(request_type_id)s, %(amount)s, %(request_date)s, %(status)s, %(comments)s, %(manager_id)s)]
+[parameters: {'employee_id': 1, 'request_type_id': '1', 'amount': 50.0, 'request_date': '2024-06-01', 'status': 'pending', 'comments': None, 'manager_id': 2}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2024-06-06 22:21:42,658 ERROR: Error: (pymysql.err.IntegrityError) (1452, 'Cannot add or update a child row: a foreign key constraint fails (`reimbursement_portal`.`reimbursement_requests`, CONSTRAINT `reimbursement_requests_ibfk_3` FOREIGN KEY (`manager_id`) REFERENCES `users` (`user_id`))')
+[SQL: INSERT INTO reimbursement_requests (employee_id, request_type_id, amount, request_date, status, comments, manager_id) VALUES (%(employee_id)s, %(request_type_id)s, %(amount)s, %(request_date)s, %(status)s, %(comments)s, %(manager_id)s)]
+[parameters: {'employee_id': 1, 'request_type_id': '1', 'amount': 150.0, 'request_date': '2024-06-01', 'status': 'pending', 'comments': None, 'manager_id': 2}]
+(Background on this error at: https://sqlalche.me/e/14/gkpj)
+2024-06-06 22:21:42,690 INFO: employee history
+2024-06-06 22:21:42,746 INFO: manager dashboard
+2024-06-06 22:21:42,790 INFO: Request approved successfully.
+2024-06-06 22:21:42,930 INFO: admin edited user details
+2024-06-06 22:24:28,065 INFO: Home page accessed
+2024-06-06 22:25:59,707 INFO: Registration successful, awaiting admin approval.
+2024-06-06 22:26:08,803 WARNING: Account is not yet activated.
+2024-06-06 22:26:16,845 INFO: Login Successful
+2024-06-06 22:26:16,915 INFO: admin dashboard
+2024-06-06 22:26:21,124 INFO: pending user registration. 
+2024-06-06 22:27:44,081 INFO: user approved by admin successfully
+2024-06-06 22:27:44,108 INFO: pending user registration. 
+2024-06-06 22:27:48,713 INFO: admin dashboard
+2024-06-06 22:27:53,437 INFO: Reibursement form request tracking
+2024-06-06 22:28:00,043 INFO: admin dashboard
+2024-06-06 22:28:01,516 INFO: Manage users
+2024-06-06 22:28:12,582 INFO: admin edited user details
+2024-06-06 22:28:22,744 INFO: user kamlesh@nucleusteq.com details updated
+2024-06-06 22:28:22,764 INFO: Manage users
+2024-06-06 22:28:26,696 INFO: user status udpated
+2024-06-06 22:28:26,709 INFO: Manage users
+2024-06-06 22:28:30,924 INFO: admin dashboard
+2024-06-06 22:28:33,118 INFO: Manager Dashboard
+2024-06-06 22:29:13,644 INFO: Add departments
+2024-06-06 22:29:13,661 INFO: Manager Dashboard
+2024-06-06 22:29:21,311 INFO: admin dashboard
+2024-06-06 22:29:22,974 INFO: log out
+2024-06-06 22:29:22,994 INFO: Home page accessed
+2024-06-06 22:29:30,226 INFO: Login Successful
+2024-06-06 22:29:30,240 INFO: employee dashboard
+2024-06-06 22:30:21,477 INFO: Reimbursement request 169 submitted successfully.
+2024-06-06 22:30:21,486 INFO: employee dashboard
+2024-06-06 22:35:12,694 INFO: Home page accessed
+2024-06-06 22:35:26,088 INFO: Home page accessed
+2024-06-06 22:35:32,994 INFO: Login Successful
+2024-06-06 22:35:33,007 INFO: employee dashboard
+2024-06-06 22:35:35,999 INFO: employee history
+2024-06-06 22:35:40,218 INFO: employee dashboard
+2024-06-06 22:35:42,559 INFO: log out
+2024-06-06 22:35:42,574 INFO: Home page accessed
+2024-06-06 22:35:50,001 INFO: Login Successful
+2024-06-06 22:35:50,066 INFO: admin dashboard
+2024-06-06 22:35:53,244 INFO: Reibursement form request tracking
+2024-06-06 22:35:57,056 INFO: admin dashboard
+2024-06-06 22:35:58,371 INFO: pending user registration. 
+2024-06-06 22:35:59,626 INFO: admin dashboard
+2024-06-06 22:36:00,540 INFO: Reibursement form request tracking
+2024-06-06 22:36:06,635 INFO: admin dashboard
+2024-06-06 22:36:08,646 INFO: Manager Dashboard
+2024-06-06 22:36:12,096 INFO: admin dashboard
+2024-06-06 22:36:14,144 INFO: log out
+2024-06-06 22:36:14,162 INFO: Home page accessed
+2024-06-06 22:36:20,212 INFO: Login Successful
+2024-06-06 22:36:20,230 INFO: employee dashboard
+2024-06-06 22:36:38,906 INFO: Reimbursement request 170 submitted successfully.
+2024-06-06 22:36:38,914 INFO: employee dashboard
+2024-06-06 22:36:40,927 INFO: employee history
+2024-06-06 22:37:16,907 INFO: employee dashboard
+2024-06-06 22:37:19,246 INFO: log out
+2024-06-06 22:37:19,260 INFO: Home page accessed
+2024-06-06 22:37:25,216 INFO: Login Successful
+2024-06-06 22:37:25,256 INFO: manager dashboard
+2024-06-06 22:37:46,594 INFO: Request rejected successfully.
+2024-06-06 22:37:55,307 INFO: Request rejected successfully.
+2024-06-06 22:38:15,846 INFO: Request approved successfully.
+2024-06-06 22:38:21,019 INFO: manager dashboard
+2024-06-06 22:38:22,539 INFO: approved requests
+2024-06-06 22:38:31,228 INFO: manager dashboard

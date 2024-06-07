@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Reimbursement Request</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='title.jpg') }}" alt="Company name">
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('download_policy') }}">Download Reimbursement Policy</a></li>
+
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container2">
+        <h1>Submit Reimbursement Request</h1>
+        {% if session.get('message') %}
+        <div id="flash-message" class="flash {{ session.pop('message_category', 'info') }}">{{ session.pop('message') }}</div>
+        {% endif %}
+        <form action="{{ url_for('submit_reimbursement') }}" method="post" enctype="multipart/form-data">
+            <label for="request_type_id">Expense Type:</label>
+            <select name="request_type_id" id="request_type_id" required>
+                <option value="">Expense Type</option>
+                {% for request_type in request_types %}
+                    <option value="{{ request_type.request_type_id }}">{{ request_type.type_name }}</option>
+                {% endfor %}
+            </select>
+            <br>
+
+            <label for="amount">Amount:</label>
+            <input type="number" step="0.01" name="amount" id="amount" required>
+            <br>
+
+            <label for="request_date">Date:</label>
+            <input type="date" name="request_date" id="request_date" required>
+            <br>
+
+            <label for="document">Document (JPG only):</label>
+            <input type="file" name="document" id="document" accept=".jpg" required>
+            <br>
+
+            <button type="submit">Submit</button>
+        </form>
+        
+    </div>    
+    <a class="container2" href="{{ url_for('employee_dashboard') }}">Back to Dashboard</a>   
+
+</body>
+</html>

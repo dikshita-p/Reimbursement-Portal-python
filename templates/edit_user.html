@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='title.jpg') }}" alt="Company name">
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('download_policy') }}">Download Reimbursement Policy</a></li>
+
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container2">
+        <h1>Edit User</h1>
+        <form action="{{ url_for('update_user', user_id=user.user_id) }}" method="post">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}" readonly><br>
+
+            <label for="role">Role:</label>
+            <select id="role" name="role">
+                <option value="Employee" {% if user.role == 'Employee' %}selected{% endif %}>Employee</option>
+                <option value="Manager" {% if user.role == 'Manager' %}selected{% endif %}>Manager</option>
+                <option value="Admin" {% if user.role == 'Admin' %}selected{% endif %}>Admin</option>
+            </select><br>
+
+            <label for="manager">Manager:</label>
+            <select id="manager" name="manager_id">
+                <option value="">None</option>
+                {% for manager in managers %}
+                <option value="{{ manager.user_id }}" {% if user.manager_id == manager.user_id %}selected{% endif %}>
+                    {{ manager.first_name }} {{ manager.last_name }}
+                </option>
+                {% endfor %}
+            </select><br>
+
+            <button type="submit">Save</button>
+        </form>
+        <a href="{{ url_for('manage_users') }}">Back to Manage Users</a> 
+    <div> 
+      
+</body>
+</html>

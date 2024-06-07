@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reimbursement Request Tracking</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    
+    <header>
+        <img src="{{ url_for('static', filename='title.jpg') }}" alt="Company name">
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('download_policy') }}">Download Reimbursement Policy</a></li>
+
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container1">
+        <h1>Reimbursement Request Tracking</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Request ID</th>
+                    <th>Employee ID</th>
+                    <th>Request Type</th>
+                    <th>Amount</th>
+                    <th>Request Date</th>
+                    <th>Status</th>
+                    <th>Manager ID</th>
+                    <th>Comments</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for request in reimbursement_requests %}
+                <tr>
+                    <td>{{ request.request_id }}</td>
+                    <td>{{ request.employee_id }}</td>
+                    <td>{{ request.request_type_id }}</td>
+                    <td>{{ request.amount }}</td>
+                    <td>{{ request.request_date }}</td>
+                    <td>{{ request.status }}</td>
+                    <td>{{ request.manager_id }}</td>
+                    <td>{{ request.comments }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a class="container2" href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>   
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pending User Registration</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dashboard.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='title.jpg') }}" alt="Company name">
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('download_policy') }}">Download Reimbursement Policy</a></li>
+
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container1">
+        <h1>Pending User Registrations</h1>
+        {% if session.get('message') %}
+            <div id="flash-message" class="flash {{ session.pop('message_category', 'info') }}">{{ session.pop('message') }}</div>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Department ID</th>
+                    <th>Department Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in pending_users %}
+                <tr>
+                    <td>{{ user.first_name }}</td>
+                    <td>{{ user.last_name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.department.department_id }}</td>
+                    <td>{{ user.department.department_name }}</td>
+                    <td>
+                        <form action="{{ url_for('approve_user', user_id=user.user_id) }}" method="post">
+                            <label for="role">Role:</label>
+                            <select name="role" required>
+                                <option value="">Select Role</option>
+                                <option value="employee">Employee</option>
+                                <option value="manager">Manager</option>
+                            </select>
+                            <label for="manager_id">Manager:</label>
+                            <select name="manager_id" required>
+                                <option value="">Select Manager</option>
+                                {% for manager in managers %}
+                                <option value="{{ manager.user_id }}">{{ manager.manager_id }} - {{ manager.first_name }} {{ manager.last_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <button type="submit">Approve</button>
+                        </form>
+                        <form action="{{ url_for('reject_user', user_id=user.user_id) }}" method="post">
+                            <button type="submit">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a class="container2" href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>   
+
+</body>
+</html>

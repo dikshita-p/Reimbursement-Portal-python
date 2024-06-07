@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='title.jpg') }}" alt="Company name">
+
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('download_policy') }}">Download Reimbursement Policy</a></li>
+
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Employee Dashboard</h1>
+        <ul>
+            <li><a href="{{ url_for('submit_reimbursement') }}">Submit Reimbursement</a></li>
+            <li><a href="{{ url_for('history') }}">History</a></li>
+        </ul>
+        
+    </div> 
+       <a class= "container2" href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
