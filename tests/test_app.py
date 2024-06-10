@@ -208,14 +208,11 @@ def test_manage_departments(client):
     assert b'IT' in response.data  
       
 def test_edit_user(client):
-    # Mock session data
     mock_session = MagicMock()
     mock_session.__contains__.side_effect = lambda key: key in ('user_id', 'role')
     mock_session.__getitem__.side_effect = lambda key: 1 if key == 'user_id' else 'Admin'
 
-    # Mock the get_session function
     with patch('crud.get_session', return_value=mock_session):
-        # Mock query results
         mock_user = MagicMock(spec=User)
         mock_managers = [MagicMock(spec=User) for _ in range(3)]
         mock_query = mock_session.query
@@ -224,24 +221,13 @@ def test_edit_user(client):
 
 
 def test_employee_dashboard(client, mock_db):
-    # Patch the get_session function to return the mock session
     with patch('database.get_session', return_value=mock_db):
-        # Simulate an Employee session
         with client.session_transaction() as sess:
             sess['user_id'] = 1
             sess['role'] = 'Employee'
-        
-        # Simulate a GET request to the /employee_dashboard endpoint
         response = client.get('/employee_dashboard')
-        
-        # Check the response status code
         assert response.status_code == 200
-        
-        # Check that the correct template is rendered
         assert b'Employee Dashboard' in response.data
-
-
-
 
 def test_submit_reimbursement(client):
     with client.session_transaction() as sess:
@@ -317,56 +303,17 @@ def test_history(client):
     assert response.status_code == 200
           
 def test_manager_dashboard(client, mock_db):
-    # Create a mock reimbursement request
     mock_request = MagicMock(spec=ReimbursementRequest)
     mock_request.manager_id = 1
     mock_request.status = 'pending'
     
     with patch('database.get_session', return_value=mock_db):
-        # Simulate a Manager session
         with client.session_transaction() as sess:
             sess['user_id'] = 1
             sess['role'] = 'Manager'
-        
-        # Simulate a GET request to the /manager_dashboard endpoint
-        response = client.get('/manager_dashboard')
-        
-        # Check the response status code
-        assert response.status_code == 200
-        
-        # Check that the correct template is rendered and contains expected content
+            response = client.get('/manager_dashboard')
+            assert response.status_code == 200
         assert b'Manager Dashboard' in response.data          
-
-# def test_pending_requests(client, mock_db):
-#     # Create mock objects
-#     mock_request = MagicMock(spec=ReimbursementRequest)
-#     mock_request.request_id = 1
-#     mock_request.status = 'pending'
-#     mock_request.manager_id = 1
-
-#     mock_user = MagicMock(spec=User)
-#     mock_user.user_id = 2
-
-#     mock_request_type = MagicMock(spec=RequestType)
-#     mock_request_type.request_type_id = 1
-
-#     mock_document = MagicMock(spec=Document)
-#     mock_document.request_id = 1
-
-#     with patch('database.get_session', return_value=mock_db):
-#         # Simulate a Manager session
-#         with client.session_transaction() as sess:
-#             sess['user_id'] = 1
-#             sess['role'] = 'Manager'
-
-#         # Simulate a GET request to the /pending_requests endpoint
-#         response = client.get('/pending_requests')
-        
-#         # Check the response status code
-#         assert response.status_code == 200
-        
-#         # Check that the correct template is rendered and contains expected content
-#         assert b'Pending Reimbursement Requests' in response.data        
 
 def test_approve_reimbursement(client, mock_db):
     mock_request = MagicMock(spec=ReimbursementRequest)
@@ -381,10 +328,8 @@ def test_approve_reimbursement(client, mock_db):
         response = client.post(f'/approve_reimbursement/{mock_request.request_id}', data={'comments': 'Approved'})
         assert response.status_code == 302  
         
-        
 def test_delete_request_type_success(mock_db):
     request_type_id = 1
-    # mock_db.data = RequestType(id=request_type_id)
     delete_request_type(request_type_id)
     
 
@@ -392,7 +337,6 @@ def test_delete_request_type_not_found(mock_db):
     request_type_id = 1
     mock_db.data = None
     delete_request_type(request_type_id)
-
 
 
 @pytest.fixture
