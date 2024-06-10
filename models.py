@@ -3,12 +3,6 @@ from datetime import datetime
 from sqlalchemy import Column, Integer, String, ForeignKey, Date, Text, Float, TIMESTAMP, Boolean
 from sqlalchemy.orm import relationship
 
-class Department(Base):
-    __tablename__ = 'departments'
-    
-    department_id = Column(Integer, primary_key=True)
-    department_name = Column(String(100), unique=True, nullable=False)
-
 class User(Base):
     __tablename__ = 'users'
     
@@ -24,6 +18,12 @@ class User(Base):
     
     manager = relationship('User', remote_side=[user_id])
     department = relationship('Department')
+    
+class Department(Base):
+    __tablename__ = 'departments'
+    
+    department_id = Column(Integer, primary_key=True)
+    department_name = Column(String(100), unique=True, nullable=False)
 
 class RequestType(Base):
     __tablename__ = 'request_types'
