@@ -1,4 +1,4 @@
 # config.py
-db_config ="mysql+pymysql://root:mySQL$30@localhost/Reimbursement_portal"
+db_config ="mysql+pymysql://username:password/db_name"
 
 
