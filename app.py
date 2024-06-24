@@ -53,7 +53,6 @@ def error():
         app.logger.error('An error occurred: %s', e)
     return 'Error page'
 
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
@@ -73,7 +72,7 @@ def register():
                 flash('Registration successful, awaiting admin approval.', 'success')
                 app.logger.info('Registration successful, awaiting admin approval.')
 
-                create_notification(1, f'New user registration pending approval: {user.email}', False, datetime.utcnow())
+                create_notification(1, f'New user registration pending approval: {user.email}', datetime.utcnow())
                 return redirect(url_for('login'))
         except SQLAlchemyError as e:
             flash(f'Error: {e}', 'danger')
@@ -85,6 +84,7 @@ def register():
                     flash(f"{error}", 'danger')
             
     return render_template('register.html', title='Register', form=form)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -102,7 +102,7 @@ def login():
             app.logger.warning('User is deleted.')
             return redirect(url_for('login'))
         
-        if user and user.password == form.password.data:                 
+        if user and (check_password_hash(user.password, form.password.data) or user.password == form.password.data):
             if user.user_status == 'inactive':
                 flash('Your account is not yet activated.', 'warning')
                 app.logger.warning('Account is not yet activated.')  
