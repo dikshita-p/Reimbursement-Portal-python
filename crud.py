@@ -2,11 +2,13 @@ from database import get_session
 from datetime import datetime
 from models import *
 from sqlalchemy.exc import SQLAlchemyError
+from werkzeug.security import generate_password_hash
 
 def create_user(first_name: str, last_name: str, email: str, password: str, role: str, user_status: str, manager_id: int, department_id: int):
-    try:
-        session = get_session()
-        user = User(first_name=first_name, last_name=last_name, email=email, password=password,
+    session = get_session()
+    try:  
+        hashed_password = generate_password_hash(password, method='sha256')        
+        user = User(first_name=first_name, last_name=last_name, email=email, password=hashed_password,
                     role=role, user_status=user_status, manager_id=manager_id, department_id=department_id)
         session.add(user)
         session.commit()
@@ -16,6 +18,8 @@ def create_user(first_name: str, last_name: str, email: str, password: str, role
         print(f"Error creating user: {e}")
         session.rollback()
         return None
+    finally:
+        session.close()
 
 def create_department(department_name: str):
     try:
